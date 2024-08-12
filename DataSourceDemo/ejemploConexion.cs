@@ -42,5 +42,28 @@ namespace DataSourceDemo
             Form1 link = new Form1();
             link.ShowDialog();
         }
+
+        private void toolStripTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                var index = customersBindingSource.Find("CustomerID", toolStripTextBox1);
+                if (index != -1)
+                {
+                    customersBindingSource.Position = index;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Elemento no encontrado");
+                }
+            };
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //Llamamos al customerBindingSource y el metodo que ejecutaremos
+            customersBindingSource.AddNew();
+        }
     }
 }
